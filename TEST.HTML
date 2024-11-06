@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Spiderverse</title>
     <style>
-        /* Font import */
+        /* Font imports */
         @font-face {
             font-family: 'RapScript';
             src: url('fonts/RapScript.otf') format('opentype');
+        }
+        @font-face {
+            font-family: 'ComicStyle';
+            src: url('fonts/comicstyle.TTF') format('truetype');
         }
 
         /* Basic styling */
@@ -17,7 +21,7 @@
             color: white;
             margin: 0;
             font-family: 'RapScript', sans-serif;
-            overflow-x: hidden; /* Prevents horizontal scroll */
+            overflow-x: hidden;
         }
 
         /* Blurred background for filling gaps */
@@ -29,7 +33,7 @@
             height: 100vh;
             background: url('photos/your-photo.jpg') no-repeat center center;
             background-size: cover;
-            filter: blur(20px); /* Applies the blur effect */
+            filter: blur(20px);
             z-index: -2;
             opacity: 0.6;
         }
@@ -40,7 +44,7 @@
             height: 100vh;
             width: 100vw;
             background: url('photos/your-photo.jpg') no-repeat center center;
-            background-size: contain; /* Ensures the entire image fits in the screen */
+            background-size: contain;
             z-index: 1;
         }
 
@@ -62,67 +66,50 @@
             display: block;
         }
 
-        /* Responsive Welcome to My Spiderverse Text */
+        /* Welcome text */
         .background-container h1 {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            z-index: 3;
             color: white;
             text-shadow: 2px 2px red;
-            animation: pulse 2s infinite ease-in-out; /* Pulse animation */
-            transition: top 0.5s ease, left 0.5s ease;
-            font-size: calc(2rem + 3vw); /* Dynamically scale font size */
-            max-width: 90%; /* Ensure text doesn't overflow horizontally */
+            animation: pulse 2s infinite ease-in-out;
+            font-size: calc(2rem + 3vw);
+            max-width: 90%;
             text-align: center;
         }
 
-        /* Pulse animation for Welcome to My Spiderverse */
+        /* Pulse animation */
         @keyframes pulse {
-            0% {
-                transform: scale(1) translate(-50%, -50%);
-            }
-            50% {
-                transform: scale(1.1) translate(-50%, -50%);
-            }
-            100% {
-                transform: scale(1) translate(-50%, -50%);
-            }
+            0% { transform: scale(1) translate(-50%, -50%); }
+            50% { transform: scale(1.1) translate(-50%, -50%); }
+            100% { transform: scale(1) translate(-50%, -50%); }
         }
 
-        /* Move title to top left on hover */
+        /* Hover effect on title */
         .background-container:hover h1 {
             top: 10%;
             left: 10%;
             transform: translate(0, 0);
         }
 
-        /* Header styling */
+        /* Header */
         header {
             text-align: center;
             padding: 20px;
             color: white;
-            background-color: transparent; /* No background color */
-            animation: bounce 2s infinite; /* Bounce effect */
+            animation: bounce 2s infinite;
         }
 
-        /* Bounce animation for header */
+        /* Bounce animation */
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
-        header:hover {
-            color: red; /* Text changes to red on hover */
-        }
+        header:hover { color: red; }
 
         /* Navigation bar */
         nav ul {
@@ -130,7 +117,6 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            padding-top: 20px;
         }
 
         nav ul li {
@@ -143,9 +129,7 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 18px;
-            padding: 10px 15px;
             transition: all 0.3s ease;
-            background: none; /* No background color */
         }
 
         nav ul li a:hover {
@@ -154,17 +138,13 @@
             text-shadow: 3px 3px black;
         }
 
-        /* Footer styling */
+        /* Footer */
         footer {
             text-align: center;
             padding: 10px;
-            width: 100%;
             color: white;
             font-size: 12px;
-            background-color: transparent; /* No background color */
-            z-index: 3;
             animation: bounce 2s infinite;
-            transition: color 0.3s ease;
         }
 
         footer a {
@@ -177,17 +157,54 @@
             color: white;
         }
 
-        /* Responsive adjustments for smaller screens */
-        @media (max-width: 768px) {
-            .background-container h1 {
-                font-size: calc(1.5rem + 3vw); /* Slightly smaller font for mobile */
-            }
-
-            nav ul li a {
-                font-size: 16px;
-            }
+        /* About, Skills, Contact sections */
+        .section {
+            padding: 60px;
+            text-align: center;
         }
 
+        .about-content, .skills-content, .contact-content {
+            font-family: 'ComicStyle', sans-serif;
+            color: white;
+            max-width: 80%;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Speech bubbles */
+        .speech-bubble {
+            background: #333;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            position: relative;
+            display: inline-block;
+            animation: zoomIn 0.5s ease;
+            font-family: 'ComicStyle';
+            transition: transform 0.3s ease;
+        }
+
+        .speech-bubble:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact section styling */
+        .contact-info {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #ff3b3b;
+        }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -195,7 +212,7 @@
     <div class="blurred-background"></div> <!-- Blurred background layer -->
 
     <div class="background-container">
-        <video src="videos/spiderman-video.mp4"></video> <!-- Your video path here -->
+        <video src="videos/spiderman-video.mp4" muted loop></video>
         <h1>Welcome to My Spiderverse</h1>
     </div>
 
@@ -210,6 +227,37 @@
         </nav>
     </header>
 
+    <!-- About Page -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="speech-bubble">I love playing football, especially as a right midfielder!</div>
+            <div class="speech-bubble">Gym is my go-to for staying fit and pushing limits!</div>
+            <div class="speech-bubble">Fashion is a passion; brands like Visu and Cortez inspire me!</div>
+            <div class="speech-bubble">Anime fan - Classroom of the Elite and Naruto are my top picks!</div>
+        </div>
+    </section>
+
+    <!-- Skills Page -->
+    <section id="skills" class="section">
+        <h2>Skills & Certifications</h2>
+        <div class="skills-content">
+            <div class="speech-bubble">Web Development, Coding, and Tech Innovation</div>
+            <div class="speech-bubble">College Degree in Business Management with Innovation</div>
+            <div class="speech-bubble">LinkedIn training: Prompt Engineering and Project Management</div>
+            <!-- Add more bubbles for certifications as needed -->
+        </div>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+        <div class="contact-content">
+            <p class="contact-info">Email: Bretnkomo123@gmail.com</p>
+            <p class="contact-info"><a href="https://linktr.ee/StruckeR7" target="_blank">My Linktree</a></p>
+        </div>
+    </section>
+
     <footer>
         <p>Shout out to <a href="https://www.sonypicturesanimation.com" target="_blank">Sony Pictures Animation Earth 1610</a></p>
     </footer>
@@ -219,13 +267,13 @@
 
         document.querySelector('.background-container').addEventListener('mouseenter', () => {
             video.play();
-            video.muted = false; /* Unmute the video when hovered */
+            video.muted = false;
         });
 
         document.querySelector('.background-container').addEventListener('mouseleave', () => {
             video.pause();
             video.currentTime = 0;
-            video.muted = true; /* Mute the video again when not hovered */
+            video.muted = true;
         });
     </script>
 
